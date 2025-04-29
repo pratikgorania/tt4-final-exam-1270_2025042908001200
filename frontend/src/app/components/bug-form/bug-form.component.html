@@ -1,0 +1,31 @@
+<h3>{{ isEditMode ? 'Edit Bug' : 'Create Bug' }}</h3>
+
+<form (ngSubmit)="submit()" #bugForm="ngForm">
+  <div class="mb-3">
+    <label>Title</label>
+    <input class="form-control" [(ngModel)]="bug.title" name="title" required />
+  </div>
+
+  <div class="mb-3">
+    <label>Description</label>
+    <textarea class="form-control" [(ngModel)]="bug.description" name="description"></textarea>
+  </div>
+
+  <div class="mb-3">
+    <label>Priority</label>
+    <select class="form-select" [(ngModel)]="bug.priority" name="priority" required>
+      <option value="" disabled>Select Priority</option>
+      <option value="Low">Low</option>
+      <option value="Medium">Medium</option>
+      <option value="High">High</option>
+    </select>
+  </div>
+
+  <div class="form-check mb-3">
+    <input class="form-check-input" type="checkbox" [(ngModel)]="bug.isResolved" name="isResolved" />
+    <label class="form-check-label">Resolved</label>
+  </div>
+
+  <button type="submit" class="btn btn-success me-2">Save</button>
+  <a class="btn btn-secondary" routerLink="/">Cancel</a>
+</form>
